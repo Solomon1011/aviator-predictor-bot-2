@@ -30,7 +30,7 @@ function saveHistory(history){
         headless:false,
         defaultViewport:null,
         args: ["--no-sandbox", "--disable-setuid-sandbox"],
-        timeout: 60000 // Added browser launch timeout
+        timeout: 300000 // Updated browser launch timeout to 5 minutes (300,000 ms)
     })
 
     console.log("Puppeteer browser launched") // Debug log added
@@ -41,7 +41,7 @@ function saveHistory(history){
 
     await page.goto("https://www.sportybet.com",{
         waitUntil:"networkidle2",
-        timeout: 30000 // Added page navigation timeout
+        timeout: 300000 // Updated page navigation timeout to 5 minutes (300,000 ms)
     })
 
     console.log("Login and open Aviator game")
