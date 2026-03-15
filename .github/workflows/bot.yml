@@ -2,25 +2,26 @@ name: Aviator Bot
 
 on:
   schedule:
-    - cron: "*/10 * * * *"
-  workflow_dispatch:
+    - cron: "*/10 * * * *"  # Run every 10 minutes
+  workflow_dispatch:  # Allow manual trigger from Actions tab
 
 jobs:
   run-bot:
+    runs-on: ubuntu-latest  # GitHub's Ubuntu runner
 
-    runs-on: ubuntu-latest
+    timeout-minutes: 15  # Timeout the job after 15 minutes
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3  # Checkout your repo
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: "18"  # Node.js version for the bot
 
       - name: Install dependencies
-        run: npm install
+        run: npm install  # Install the bot's dependencies
 
-      - name: Run bot
-        run: node scraper.js
+      - name: Run the bot
+        run: node scraper.js  # Run the bot code
