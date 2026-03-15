@@ -1,0 +1,12 @@
+{
+  "name": "aviator-monitor-bot",
+  "version": "1.0.0",
+  "description": "Aviator crash analyzer bot",
+  "main": "scraper.js",
+  "scripts": {
+    "start": "node scraper.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0"
+  }
+}
