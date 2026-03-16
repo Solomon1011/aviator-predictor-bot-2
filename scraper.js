@@ -27,8 +27,8 @@ function saveHistory(history){
     console.log("Bot started...") // Debug log added
 
     const browser = await puppeteer.launch({
-        headless:false,
-        defaultViewport:null,
+        headless: "new",  // Launch in headless mode, works on GitHub Actions
+        defaultViewport: null,
         args: ["--no-sandbox", "--disable-setuid-sandbox"],
         timeout: 300000 // Updated browser launch timeout to 5 minutes (300,000 ms)
     })
@@ -59,7 +59,8 @@ function saveHistory(history){
 
                 if(!el) return null
 
-                return el.innerText
+                // Fix: parse float and remove 'x' from multiplier string
+                return parseFloat(el.innerText.replace("x",""))
             })
 
             // Debug log: show fetched value
